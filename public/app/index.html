@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>ShopStack — Store</title>
+<link rel="stylesheet" href="/app/assets/app.css">
+<script>
+/* apply persisted theme before first paint */
+(function(){document.documentElement.dataset.theme=localStorage.getItem('ss_theme')||'system';})();
+</script>
+</head>
+<body class="tenant-app">
+<div id="app"><div class="boot-splash"><div class="spinner"></div><p>Loading ShopStack…</p></div></div>
+<script src="/app/assets/api.js"></script>
+<script src="/app/assets/js/core.js"></script>
+<script src="/app/assets/js/pages-dash.js"></script>
+<script src="/app/assets/js/pages-sell.js"></script>
+<script src="/app/assets/js/pages-stock.js"></script>
+<script src="/app/assets/js/pages-money.js"></script>
+<script src="/app/assets/js/pages-org.js"></script>
+<script>
+  window.Pages = window.Pages || {};
+</script>
+<script src="/app/assets/tenant.js"></script>
+</body>
+</html>

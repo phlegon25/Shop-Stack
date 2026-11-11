@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ShopStack — the POS, inventory and business intelligence platform for Ghanaian shops. Offline-ready sales, stock control, credit customers, expenses and real profit reports.">
+<meta name="color-scheme" content="light dark">
+<title>ShopStack — Run Your Business. Know Your Numbers.</title>
+<link rel="stylesheet" href="/app/assets/app.css">
+<style>
+:root { --ld-grad: linear-gradient(135deg, #6b4ef6 0%, #3f7dff 55%, #22c1c3 100%); }
+body { margin: 0; }
+.ld-nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px); background: color-mix(in srgb, var(--bg) 82%, transparent); border-bottom: 1px solid var(--line); }
+.ld-nav .inner { max-width: 1120px; margin: 0 auto; padding: .7rem 1.2rem; display: flex; align-items: center; gap: 1.2rem; }
+.ld-nav a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: .9rem; }
+.ld-nav .links { display: flex; gap: 1.1rem; flex: 1; justify-content: center; }
+.hero { background: var(--ld-grad); color: #fff; padding: 4.6rem 1.2rem 0; position: relative; overflow: hidden; }
+.hero::after { content: ''; position: absolute; inset: auto -10% -45% -10%; height: 60%; background: radial-gradient(closest-side, rgba(255,255,255,.16), transparent); pointer-events: none; }
+.hero .inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr .9fr; gap: 2.5rem; align-items: center; }
+.hero h1 { font-size: clamp(2rem, 4.6vw, 3.3rem); line-height: 1.08; margin: 0 0 1rem; }
+.hero p.lede { font-size: 1.12rem; opacity: .93; max-width: 34rem; }
+.hero .cta-row { display: flex; gap: .8rem; flex-wrap: wrap; margin: 1.6rem 0 .9rem; }
+.btn-hero { background: #fff; color: #4a35c9; font-weight: 800; padding: .85rem 1.6rem; border-radius: 999px; text-decoration: none; font-size: 1rem; box-shadow: 0 12px 28px rgba(0,0,0,.18); transition: transform .15s, box-shadow .15s; }
+.btn-hero:hover { transform: translateY(-2px); box-shadow: 0 18px 34px rgba(0,0,0,.22); }
+.btn-hero.ghost { background: rgba(255,255,255,.14); color: #fff; box-shadow: none; border: 1px solid rgba(255,255,255,.4); }
+.hero .trust { display: flex; gap: 1.4rem; flex-wrap: wrap; font-size: .82rem; opacity: .9; padding-bottom: 3.4rem; }
+.hero-shot { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.28); border-radius: 18px 18px 0 0; padding: 1.1rem 1.1rem 0; box-shadow: 0 -20px 60px rgba(0,0,0,.2); }
+.shot-bar { display: flex; gap: .4rem; margin-bottom: .9rem; }
+.shot-bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,.5); }
+.shot-body { background: rgba(255,255,255,.96); color: #1c2230; border-radius: 12px 12px 0 0; padding: 1rem; display: grid; gap: .6rem; }
+.shot-row { display: flex; justify-content: space-between; align-items: center; font-size: .8rem; }
+.shot-kpi { background: #f1f3ff; border-radius: 10px; padding: .55rem .7rem; font-weight: 700; font-size: .8rem; }
+.shot-kpi small { display: block; color: #69708a; font-weight: 500; }
+section.ld-sec { max-width: 1120px; margin: 0 auto; padding: 4rem 1.2rem; }
+.sec-kick { color: var(--brand); font-weight: 800; letter-spacing: .14em; text-transform: uppercase; font-size: .74rem; }
+.ld-sec h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); margin: .4rem 0 .4rem; }
+.ld-sec .sub { color: var(--muted); max-width: 40rem; }
+.feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; margin-top: 1.8rem; }
+.feat { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 1.2rem; transition: transform .15s, box-shadow .15s; }
+.feat:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(0,0,0,.08); }
+.feat .fi { font-size: 1.6rem; }
+.feat h3 { margin: .5rem 0 .35rem; font-size: 1.02rem; }
+.feat p { margin: 0; color: var(--muted); font-size: .86rem; line-height: 1.5; }
+.how { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin-top: 1.8rem; }
+.how .step { border: 1px dashed var(--line); border-radius: 16px; padding: 1.1rem; position: relative; }
+.how .step .n { position: absolute; top: -13px; left: 1rem; background: var(--brand); color: #fff; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: .8rem; font-weight: 800; }
+.how .step h3 { margin: .5rem 0 .3rem; font-size: .96rem; }
+.how .step p { color: var(--muted); font-size: .84rem; margin: 0; }
+.price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.1rem; margin-top: 1.8rem; }
+.price-card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 1.4rem; display: flex; flex-direction: column; gap: .55rem; position: relative; }
+.price-card.hot { border-color: var(--brand); box-shadow: 0 16px 40px color-mix(in srgb, var(--brand) 22%, transparent); }
+.price-card .flag { position: absolute; top: -12px; right: 1rem; background: var(--brand); color: #fff; font-size: .68rem; font-weight: 800; padding: .25rem .6rem; border-radius: 999px; letter-spacing: .08em; }
+.price-card .amount { font-size: 2rem; font-weight: 850; }
+.price-card .amount small { font-size: .85rem; color: var(--muted); font-weight: 500; }
+.price-card ul { margin: .4rem 0 .9rem; padding-left: 1.15rem; color: var(--ink); font-size: .88rem; display: grid; gap: .3rem; flex: 1; }
+.faq details { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: .9rem 1.1rem; margin-top: .65rem; }
+.faq summary { font-weight: 700; cursor: pointer; }
+.faq details p { color: var(--muted); font-size: .88rem; margin-bottom: .2rem; }
+.ld-cta { background: var(--ld-grad); border-radius: 22px; color: #fff; text-align: center; padding: 3rem 1.4rem; }
+.ld-footer { border-top: 1px solid var(--line); margin-top: 3rem; }
+.ld-footer .inner { max-width: 1120px; margin: 0 auto; padding: 2rem 1.2rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; color: var(--muted); font-size: .82rem; }
+.reg-panel { max-height: 74vh; overflow-y: auto; }
+.reg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 .8rem; }
+.reg-grid .full { grid-column: 1 / -1; }
+@media (max-width: 900px) {
+  .hero .inner { grid-template-columns: 1fr; }
+  .hero-shot { display: none; }
+  .ld-nav .links { display: none; }
+  .reg-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<nav class="ld-nav">
+  <div class="inner">
+    <a href="#" style="display:flex;align-items:center;gap:.55rem;font-size:1.05rem"><span class="sidebar-head .mark" style="display:none"></span><span class="badge badge-blue" style="width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-weight:900">S</span><strong>ShopStack</strong></a>
+    <div class="links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="btn btn-ghost btn-sm" href="/app/#/login">Sign in</a>
+    <button class="btn btn-primary btn-sm" data-open-register>Start free trial</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="inner">
+    <div>
+      <div class="badge badge-green" style="background:rgba(255,255,255,.18);color:#fff">🇬🇭 Built for Ghanaian shops</div>
+      <h1 id="hero-title">Run Your Business.<br>Know Your Numbers.</h1>
+      <p class="lede">Sell fast at the counter, keep your stock honest, track who owes you — and see your <strong>real profit</strong> every single day. Works online and keeps selling when the network drops.</p>
+      <div class="cta-row">
+        <button class="btn-hero" data-open-register>Start <span id="trial-days">14</span>-day free trial →</button>
+        <a class="btn-hero ghost" href="#pricing">See pricing</a>
+      </div>
+      <div class="trust">
+        <span>✓ No card required</span>
+        <span>✓ Pay with MoMo or bank transfer</span>
+        <span>✓ Cancel anytime</span>
+        <span>✓ Your data stays yours</span>
+      </div>
+    </div>
+    <div class="hero-shot" aria-hidden="true">
+      <div class="shot-bar"><i></i><i></i><i></i></div>
+      <div class="shot-body">
+        <div class="shot-row"><strong>Good morning, Mama Esi 👋</strong></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem">
+          <div class="shot-kpi"><small>Today's sales</small>GHS 1,240.00</div>
+          <div class="shot-kpi"><small>Gross profit</small>GHS 410.00</div>
+          <div class="shot-kpi"><small>You are owed</small>GHS 672.00</div>
+        </div>
+        <div class="shot-row" style="color:#69708a">⚠ Milo 800g — only 3 left &nbsp;·&nbsp; ⚠ Auntie Vida owes for 12 days</div>
+        <div class="shot-row"><span style="background:#efe9ff;color:#5b3ee0;border-radius:8px;padding:.45rem .7rem;font-weight:700">＋ New sale</span><span style="background:#e8f6ef;color:#118a52;border-radius:8px;padding:.45rem .7rem;font-weight:700">Checkout →</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="ld-sec" id="features">
+  <div class="sec-kick">Everything a shop needs</div>
+  <h2>Sell faster. Stock smarter. Collect every pesewa.</h2>
+  <p class="sub">ShopStack is a complete point-of-sale, inventory and business-intelligence workspace — POS terminal, stock ledgers, credit customers, supplier payables, expenses and honest P&amp;L, in one login.</p>
+  <div class="feat-grid">
+    <div class="feat"><div class="fi">🛒</div><h3>POS that never stops</h3><p>Barcode search, product grid, hold carts, discounts, retail &amp; wholesale pricing, exact-change calculator. Keeps working when the network drops and syncs after.</p></div>
+    <div class="feat"><div class="fi">📦</div><h3>Honest inventory</h3><p>Every restock, sale, damage and adjustment is a ledger entry. Stock can't be edited quietly — it's moved, with the user's name on the movement.</p></div>
+    <div class="feat"><div class="fi">🤝</div><h3>Credit customers, tamed</h3><p>Credit limits, due dates, account statements, reminders. See exactly who owes you, how much, and for how many days.</p></div>
+    <div class="feat"><div class="fi">📥</div><h3>Suppliers &amp; payables</h3><p>Record purchases, pay balances off, track what you owe each supplier. Stock and costs update themselves — properly.</p></div>
+    <div class="feat"><div class="fi">📈</div><h3>Real profit, never estimated</h3><p>Daily, weekly, monthly P&amp;L split by cashier, method and product. If any sale lacks a cost price, profit is hidden — never guessed.</p></div>
+    <div class="feat"><div class="fi">👥</div><h3>Staff with guardrails</h3><p>Owner, manager, cashier, inventory, accountant roles. A cashier can't see your profit; a stock clerk can't refund. Every action lands in an immutable activity log.</p></div>
+    <div class="feat"><div class="fi">🧾</div><h3>Receipts &amp; invoices</h3><p>Thermal 80mm receipts and clean A4 invoices with your logo, branded for your shop. Issue, print, done.</p></div>
+    <div class="feat"><div class="fi">💳</div><h3>Simple billing</h3><p>Pay with MTN MoMo, Telecel Cash, AirtelTigo Money or bank transfer. Our team verifies and activates your plan within hours.</p></div>
+  </div>
+</section>
+
+<section class="ld-sec" id="how">
+  <div class="sec-kick">Start in minutes</div>
+  <h2>From sign-up to first sale before lunch</h2>
+  <div class="how">
+    <div class="step"><span class="n">1</span><h3>Create your workspace</h3><p>Name, email, password — plus your city and region. Your free trial starts immediately, no card.</p></div>
+    <div class="step"><span class="n">2</span><h3>Follow the setup wizard</h3><p>An 8-step wizard adds your currency, tax rate, first category, product, supplier and team member.</p></div>
+    <div class="step"><span class="n">3</span><h3>Sell at the POS</h3><p>Search or tap products, take cash / MoMo / bank / card, print the receipt. Stock and profit update instantly.</p></div>
+    <div class="step"><span class="n">4</span><h3>Know your numbers</h3><p>Daily dashboard, low-stock alerts, who-owes-you list and real profit — every morning.</p></div>
+  </div>
+</section>
+
+<section class="ld-sec" id="pricing">
+  <div class="sec-kick">Simple pricing</div>
+  <h2>One price for the whole workspace</h2>
+  <p class="sub">Every plan includes POS, inventory, customers, suppliers, expenses, reports, receipts, support and backups. You choose the headroom.</p>
+  <div class="price-grid" id="plans-grid"><div class="grid" style="gap:.7rem"><div class="skeleton" style="height:220px"></div></div></div>
+  <p class="sub mt2" id="pricing-note"></p>
+</section>
+
+<section class="ld-sec faq" id="faq">
+  <div class="sec-kick">Questions</div>
+  <h2>Frequently asked</h2>
+  <details><summary>How do I pay my subscription?</summary><p>With MTN Mobile Money, Telecel Cash, AirtelTigo Money or bank transfer. Send the amount to the platform accounts shown inside the app, submit your reference, and a human verifies and activates your plan — usually within hours.</p></details>
+  <details><summary>Does it work without internet?</summary><p>The POS is designed for real Ghana conditions: keep selling when the network stutters, and everything syncs when you're back online.</p></details>
+  <details><summary>Can my staff use it without seeing everything?</summary><p>Yes. Roles control everything: cashiers sell, inventory clerks handle stock, accountants see reports, managers get almost everything. Every sensitive action is logged against the person who did it.</p></details>
+  <details><summary>What happens when my trial ends?</summary><p>Your data stays safe. You get a short grace period to pay, and the app reminds both you and our team. Renew and continue exactly where you stopped.</p></details>
+  <details><summary>Is my data safe?</summary><p>Your workspace is isolated per shop, sessions are short-lived tokens, passwords are Argon2id-hashed, and even our platform team cannot see your passwords. Platform admins act through audited, time-boxed sessions only.</p></details>
+</section>
+
+<section class="ld-sec">
+  <div class="ld-cta">
+    <h2 style="color:#fff;margin-top:0">Ready to know your numbers?</h2>
+    <p style="opacity:.94">Join the shops running on ShopStack. Free <span class="trial-days-inline">14</span> days, then pay with MoMo — cancel anytime.</p>
+    <button class="btn-hero" data-open-register style="border:0">Create my free workspace →</button>
+  </div>
+</section>
+
+<footer class="ld-footer">
+  <div class="inner">
+    <div><strong>ShopStack</strong> · Run Your Business. Know Your Numbers.<br>POS · Inventory · Credit · Expenses · Real Profit</div>
+    <div><a href="/app/#/login">Sign in</a> · <a href="/app/admin.html">Platform console</a><br>Made for shops across Ghana 🇬🇭</div>
+  </div>
+</footer>
+
+<script src="/app/assets/api.js"></script>
+<script src="/app/assets/js/core.js"></script>
+<script>
+(function () {
+  api.setScope('tenant');
+  const REGIONS = ['Ahafo', 'Ashanti', 'Bono', 'Bono East', 'Central', 'Eastern', 'Greater Accra', 'North East', 'Northern', 'Oti', 'Savannah', 'Upper East', 'Upper West', 'Volta', 'Western', 'Western North'];
+
+  // Public platform metadata + plan catalogue (both unauthenticated, non-sensitive).
+  api.get('/platform').then((meta) => {
+    document.title = meta.name + ' — ' + meta.tagline;
+    $('#hero-title').innerHTML = meta.tagline.replace(/\./g, '.<br>').replace(/<br>\s*<br>/, '<br>');
+    $$('#trial-days, .trial-days-inline').forEach((e) => { e.textContent = meta.trial_days; });
+  }).catch(() => {});
+
+  api.get('/billing/plans').then((plans) => {
+    renderPlans(plans.data || [], plans.currency || 'GHS');
+  }).catch(() => renderPlans([], null));
+
+  function renderPlans(plans, currency) {
+    const grid = $('#plans-grid');
+    if (!plans.length) { grid.innerHTML = '<div class="alert alert-amber">Plans are loading — try again in a moment.</div>'; return; }
+    const hot = plans.length > 1 ? 1 : 0;
+    grid.innerHTML = plans.map((p, i) => `
+      <div class="price-card ${i === hot ? 'hot' : ''}">
+        ${i === hot ? '<span class="flag">MOST POPULAR</span>' : ''}
+        <h3>${esc(p.name)}</h3>
+        <div class="amount">${money(p.price, currency)}<small> / ${p.duration_days} days</small></div>
+        ${p.description ? `<div class="muted small">${esc(p.description)}</div>` : ''}
+        <ul>${(p.features || []).map((f) => `<li>${esc(f)}</li>`).join('')}</ul>
+        <button class="btn ${i === hot ? 'btn-primary' : ''}" data-open-register>Start free trial</button>
+      </div>`).join('');
+    $('#pricing-note').textContent = currency
+      ? `All prices in ${currency}. Trial: every workspace starts free; renews at plan price when it ends. Pay via MoMo or bank transfer.`
+      : '';
+    wireButtons();
+  }
+
+  function registerModal() {
+    const m = openModal('Create your free workspace', `<div class="reg-panel">
+      <form id="reg-form" novalidate>
+        <div id="reg-err"></div>
+        <div class="reg-grid">
+          <div class="full"><label>Shop name *</label><input name="business_name" minlength="2" maxlength="120" required placeholder="Mama Esi Provision Store"></div>
+          <div class="full"><label>Your full name *</label><input name="owner_name" minlength="2" maxlength="120" required placeholder="Esi Mensah"></div>
+          <div class="full"><label>Email (your sign-in) *</label><input name="email" type="email" required maxlength="190" placeholder="esi@example.com"></div>
+          <div><label>Phone</label><input name="phone" maxlength="30" pattern="[0-9+\\s\\-()]+" placeholder="024 000 0000"></div>
+          <div><label>Business type</label><input name="business_type" maxlength="60" placeholder="Provision store / Pharmacy / Boutique"></div>
+          <div><label>City</label><input name="city" maxlength="80" placeholder="Accra"></div>
+          <div><label>Region</label><select name="region"><option value="">Choose region…</option>${REGIONS.map((r) => `<option>${r}</option>`).join('')}</select></div>
+          <div class="full"><label>Shop address</label><input name="address" maxlength="300" placeholder="Nii Kpakpa Street, Dansoman"></div>
+          <div><label>Country</label><input name="country" maxlength="80" value="Ghana"></div>
+          <div><label>Currency</label><select name="currency"><option value="GHS">GHS — Ghana Cedi</option><option value="USD">USD</option><option value="NGN">NGN</option><option value="XOF">XOF</option></select></div>
+          <div><label>Password *</label><input name="password" type="password" minlength="10" required autocomplete="new-password" placeholder="12+ chars, mixed case + number"></div>
+          <div><label>Repeat password *</label><input name="password_confirmation" type="password" required autocomplete="new-password"></div>
+        </div>
+        <button class="btn btn-primary btn-lg mt2" style="width:100%" type="submit" id="reg-submit">Start my free trial →</button>
+        <p class="muted small center mt1">Trial starts immediately. No card needed. We'll walk you through a 2-minute setup wizard inside.</p>
+      </form></div>`, true);
+
+    $('#reg-form', m).onsubmit = async (e) => {
+      e.preventDefault();
+      const v = formValues(e.target);
+      const btn = $('#reg-submit', m);
+      btn.disabled = true; btn.textContent = 'Creating your workspace…';
+      try {
+        const r = await api.post('/auth/register', v);
+        api.setScope('tenant');
+        api.token = r.token;
+        toast('Welcome aboard! Setting up your workspace…', 'ok');
+        location.href = '/app/#/onboarding';
+      } catch (err) {
+        btn.disabled = false; btn.textContent = 'Start my free trial →';
+        $('#reg-err', m).innerHTML = `<div class="alert alert-red">${esc(err.message)}</div>${fieldErrors(err)}`;
+      }
+    };
+  }
+
+  function wireButtons() {
+    $$('[data-open-register]').forEach((b) => {
+      b.onclick = registerModal;
+    });
+  }
+  wireButtons();
+})();
+</script>
+</body>
+</html>
